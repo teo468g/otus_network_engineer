@@ -1,0 +1,25 @@
+R1#show arp
+Protocol  Address          Age (min)  Hardware Addr   Type   Interface
+Internet  192.168.3.3             107 0000.0CD0.AD5D  ARPA   GigabitEthernet0/0/1.3
+Internet  192.168.3.11            67  000A.F388.5201  ARPA   GigabitEthernet0/0/1.3
+Internet  192.168.3.12            99  0001.9611.0201  ARPA   GigabitEthernet0/0/1.3
+Internet  192.168.4.3             72  0001.9617.752C  ARPA   GigabitEthernet0/0/1.4
+
+R1#show ip route 
+
+     192.168.3.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.3.0/24 is directly connected, GigabitEthernet0/0/1.3
+L       192.168.3.1/32 is directly connected, GigabitEthernet0/0/1.3
+     192.168.4.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.4.0/24 is directly connected, GigabitEthernet0/0/1.4
+L       192.168.4.1/32 is directly connected, GigabitEthernet0/0/1.4
+
+R1#  show ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+GigabitEthernet0/0/0   unassigned      YES unset  administratively down down 
+GigabitEthernet0/0/1   unassigned      YES unset  up                    up 
+GigabitEthernet0/0/1.3 192.168.3.1     YES manual up                    up 
+GigabitEthernet0/0/1.4 192.168.4.1     YES manual up                    up 
+GigabitEthernet0/0/1.8 unassigned      YES unset  up                    up 
+GigabitEthernet0/0/2   unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
