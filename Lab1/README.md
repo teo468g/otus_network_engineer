@@ -17,8 +17,6 @@
 
 R1#show arp  
 
-****
-
 
 Protocol  Address          Age (min)  Hardware Addr   Type   Interface
 Internet  192.168.3.3             107 0000.0CD0.AD5D  ARPA   GigabitEthernet0/0/1.3
