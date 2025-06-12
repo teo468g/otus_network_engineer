@@ -15,7 +15,7 @@
 
 ## Trubleshooting R1  
 
-R1#show arp  
+**R1#show arp**
 
 
 Protocol  Address          Age (min)  Hardware Addr   Type   Interface
