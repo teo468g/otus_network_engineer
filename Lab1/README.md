@@ -9,20 +9,24 @@
  Конфигурация [S1](configS1.txt)
 
   Конфигурация [S2](configS2.txt)
-  
 
 
 
-## Trubleshooting R1
 
-R1#show arp
+## Trubleshooting R1  
+
+R1#show arp  
+
+****
+
+
 Protocol  Address          Age (min)  Hardware Addr   Type   Interface
 Internet  192.168.3.3             107 0000.0CD0.AD5D  ARPA   GigabitEthernet0/0/1.3
 Internet  192.168.3.11            67  000A.F388.5201  ARPA   GigabitEthernet0/0/1.3
 Internet  192.168.3.12            99  0001.9611.0201  ARPA   GigabitEthernet0/0/1.3
 Internet  192.168.4.3             72  0001.9617.752C  ARPA   GigabitEthernet0/0/1.4
 
-R1#show ip route 
+R1#show ip route   
 
      192.168.3.0/24 is variably subnetted, 2 subnets, 2 masks
 C       192.168.3.0/24 is directly connected, GigabitEthernet0/0/1.3
@@ -31,7 +35,9 @@ L       192.168.3.1/32 is directly connected, GigabitEthernet0/0/1.3
 C       192.168.4.0/24 is directly connected, GigabitEthernet0/0/1.4
 L       192.168.4.1/32 is directly connected, GigabitEthernet0/0/1.4
 
-R1#  show ip int br
+R1#  show ip int br  
+
+
 Interface              IP-Address      OK? Method Status                Protocol 
 GigabitEthernet0/0/0   unassigned      YES unset  administratively down down 
 GigabitEthernet0/0/1   unassigned      YES unset  up                    up 
@@ -43,7 +49,8 @@ Vlan1                  unassigned      YES unset  administratively down down
 
 ## Trubleshooting S1
 
-S1# show vlan br
+S1# show vlan br  
+
 
 VLAN Name                             Status    Ports
 ---- -------------------------------- --------- -------------------------------
@@ -62,7 +69,9 @@ VLAN Name                             Status    Ports
 1004 fddinet-default                  active    
 1005 trnet-default                    active 
 
-S1#show int trunk 
+S1#show int trunk   
+
+
 Port        Mode         Encapsulation  Status        Native vlan
 Fa0/1       on           802.1q         trunking      8
 Fa0/5       on           802.1q         trunking      8
@@ -81,7 +90,8 @@ Fa0/5       3,4,8
 
 ## Trubleshooting S2
 
-S2#show vlan br
+S2#show vlan br  
+
 
 VLAN Name                             Status    Ports
 ---- -------------------------------- --------- -------------------------------
@@ -100,7 +110,9 @@ VLAN Name                             Status    Ports
 1004 fddinet-default                  active    
 1005 trnet-default                    active  
   
-S2#show int tr
+S2#show int tr  
+
+
 Port        Mode         Encapsulation  Status        Native vlan
 Fa0/1       on           802.1q         trunking      8
 
