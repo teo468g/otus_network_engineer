@@ -87,9 +87,9 @@ PC-B успешно получает адресацию из подсети C
 
 DHCPv6
 
-![](ipv6.PNG) 
+![](../Lab3/IPv6/ipv6.PNG) 
 
-![](ipv6_plan.PNG)
+![](../Lab3/IPv6/ipv6_plan.PNG)
 
 Конфигурируем два DHCPv6 пула и интерфейсы на R1  
 
