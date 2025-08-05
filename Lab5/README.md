@@ -29,10 +29,36 @@ ip access-list standard Vlan31
 
  Применим route-map на входящем интерфейсе R28
 
- interface Ethernet0/2
- description to SW29
- no ip address
- ip policy route-map Balance
+ interface Ethernet0/2  
+ description to SW29  
+ no ip address  
+ ip policy route-map Balance  
+
+Настроим отслеживание линка R28 e0/2 - SW29 e0/2 
+
+ip sla 1   
+ icmp-echo 172.18.1.29 source-ip 172.18.1.28  
+ frequency 5  
+ip sla schedule 1 life forever start-time now  
+
+Статистика:
+
+R28#show ip sla statistics  
+IPSLAs Latest Operation Statistics  
+
+IPSLA operation id: 1  
+        Latest RTT: 1 milliseconds  
+Latest operation start time: 11:39:45 UTC Tue Aug 5 2025  
+Latest operation return code: OK  
+Number of successes: 513  
+Number of failures: 1  
+Operation time to live: Forever  
+
+Маршрут по-умолчанию для офиса Лабытнанги:
+
+ip default-gateway 192.168.1.9
+
+
 
 
 
