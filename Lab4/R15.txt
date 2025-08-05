@@ -1,0 +1,20 @@
+hostname R15
+
+interface Loopback0
+ ip address 10.0.0.15 255.255.255.0
+!
+interface Ethernet0/0
+ description to R13
+ ip address 172.16.4.15 255.255.255.0
+!
+interface Ethernet0/1
+ description to R12
+ ip address 172.16.5.15 255.255.255.0
+!
+interface Ethernet0/2
+ description to R21
+ ip address 192.168.1.2 255.255.255.254
+!
+interface Ethernet0/3
+ description to R20
+ ip address 172.16.6.15 255.255.255.0

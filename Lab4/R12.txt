@@ -1,0 +1,26 @@
+hostname R12
+!
+
+!
+interface Loopback0
+ ip address 10.0.0.12 255.255.255.0
+!
+interface Ethernet0/0
+ description to SW4
+ no ip address
+!
+interface Ethernet0/0.2
+ encapsulation dot1Q 2
+ ip address 172.16.1.12 255.255.255.0
+!
+interface Ethernet0/1
+ description to SW5
+ no ip address
+!
+interface Ethernet0/2
+ description to R14
+ ip address 172.16.4.12 255.255.255.0
+!
+interface Ethernet0/3
+ description to R15
+ ip address 172.16.5.12 255.255.255.0

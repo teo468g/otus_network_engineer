@@ -1,0 +1,29 @@
+hostname SW29
+!
+!
+interface Loopback0
+ ip address 10.0.0.29 255.255.255.0
+!
+interface Ethernet0/0
+ description to VPC30
+ switchport access vlan 30
+ switchport trunk encapsulation dot1q
+ switchport mode access
+!
+interface Ethernet0/1
+ description to VPC31
+ switchport access vlan 31
+ switchport mode access
+!
+interface Ethernet0/2
+ description to R28
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface Ethernet0/3
+!
+interface Vlan30
+ ip address 172.18.1.29 255.255.255.0
+!
+interface Vlan31
+ ip address 172.18.2.29 255.255.255.0

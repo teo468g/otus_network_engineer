@@ -1,0 +1,17 @@
+hostname R22
+!
+!
+interface Loopback0
+ ip address 10.0.0.22 255.255.255.0
+!
+interface Ethernet0/0
+ description to R14
+ ip address 192.168.1.1 255.255.255.254
+!
+interface Ethernet0/1
+ description to R21
+ ip address 192.168.1.17 255.255.255.254
+!
+interface Ethernet0/2
+ description to R23
+ ip address 192.168.1.11 255.255.255.254

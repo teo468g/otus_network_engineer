@@ -1,0 +1,9 @@
+hostname R19
+
+interface Loopback0
+ ip address 10.0.0.19 255.255.255.0
+!
+interface Ethernet0/0
+ description to R14
+ ip address 172.16.6.19 255.255.255.0
+

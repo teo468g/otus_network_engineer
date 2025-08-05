@@ -1,0 +1,27 @@
+hostname R28
+!
+!
+interface Loopback0
+ ip address 10.0.0.29 255.255.255.0
+!
+interface Ethernet0/0
+ description to R26
+ ip address 192.168.1.17 255.255.255.254
+ shutdown
+!
+interface Ethernet0/1
+ description to R25
+ ip address 192.168.1.15 255.255.255.254
+ shutdown
+!
+interface Ethernet0/2
+ description to SW29
+ no ip address
+!
+interface Ethernet0/2.30
+ encapsulation dot1Q 30
+ ip address 172.18.1.28 255.255.255.0
+!
+interface Ethernet0/2.31
+ encapsulation dot1Q 31
+ ip address 172.18.2.28 255.255.255.0
