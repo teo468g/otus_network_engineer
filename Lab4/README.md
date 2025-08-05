@@ -13,4 +13,11 @@
 
 ![](topology.PNG) 
 
+Адресация сети
+
+![](ip_addressing1.PNG) 
+![](ip_addressing2.PNG)
+![](ip_addressing3.PNG) 
+
+Конфигурационные файлы
 
