@@ -23,7 +23,7 @@
 
 [S1](../Lab4/R12.txt)  
 [S1](../Lab4/R13.txt)  
-[S1](../Lab4/R14.txt) 
+[S1](../Lab4/R14.txt)   
 [S1](../Lab4/R15.txt)  
 [S1](../Lab4/R16.txt)  
 [S1](../Lab4/R17.txt)    
