@@ -128,7 +128,7 @@ interface Loopback0
  ip address 10.0.0.20 255.255.255.0  
  ip ospf network point-to-point  
  ip ospf 1 area 102  
-!
+
 interface Ethernet0/0  
  description to R15  
  ip address 172.16.8.20 255.255.255.0  
