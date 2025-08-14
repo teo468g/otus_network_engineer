@@ -145,7 +145,7 @@ interface Ethernet0/0
 
 Gateway of last resort is not set  
 
-      10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks  
+10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks  
 C        10.0.0.0/24 is directly connected, Loopback0  
 L        10.0.0.20/32 is directly connected, Loopback0  
       172.16.0.0/16 is variably subnetted, 5 subnets, 2 masks  
