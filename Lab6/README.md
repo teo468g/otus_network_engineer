@@ -120,7 +120,7 @@ router ospf 1
  area 10 stub  
  area 102 filter-list prefix R19 in  
  
-R20:
+R20:  
 router ospf 1  
 
 interface Loopback0  
