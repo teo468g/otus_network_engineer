@@ -8,6 +8,8 @@
 
 Между R14 и R15 создадим прямой линк тк area 0 не должна прерываться. На R14 и R15 включаем ospf и добавляем его на соответствующие интерфейсы.
 
+Пример конфигурации на R14:  
+
 router ospf 1
 
 interface Ethernet1/0  
@@ -15,10 +17,10 @@ interface Ethernet1/0
  ip address 172.16.7.14 255.255.255.0  
  ip ospf 1 area 0  
 
-interface Ethernet1/0  
- description to R14  
- ip address 172.16.7.15 255.255.255.0  
- ip ospf 1 area 0  
+interface Loopback0
+ ip address 10.0.0.14 255.255.255.0
+ ip ospf 1 area 0
+
 
 Соседство full присутствует:  
 R14#sh ip ospf neighbor
@@ -32,8 +34,7 @@ Neighbor ID     Pri   State           Dead Time   Address         Interface
 
 interface Loopback0  
  ip address 10.0.0.12 255.255.255.0  
- ip ospf network point-to-point  
- ip ospf 1 area 10  
+  ip ospf 1 area 10  
 
 interface Ethernet0/2  
  description to R14  
@@ -72,7 +73,7 @@ O IA     172.16.7.0/24 [110/20] via 172.16.5.15, 00:27:06, Ethernet0/3
 O IA     172.16.8.0/24 [110/20] via 172.16.5.15, 00:27:06, Ethernet0/3  
 
 ## 3. Маршрутизатор R19 находится в зоне 101 и получает только маршрут по умолчанию.
-На R14 отключаем передачу LSA 3 на R19 и создаем totally stub area 101.  
+На R14 отключаем передачу LSA 3 в area 101 и создаем totally stub area на R19 .  
 
 R14:  
 interface Ethernet0/3  
@@ -85,6 +86,11 @@ interface Ethernet0/3
  area 101 stub no-summary  
 
 R19:  
+interface Loopback0  
+ ip address 10.0.0.19 255.255.255.0  
+ ip ospf network point-to-point  
+ ip ospf 1 area 101  
+
 interface Ethernet0/0  
  description to R14  
  ip address 172.16.6.19 255.255.255.0  
@@ -133,7 +139,7 @@ interface Ethernet0/0
  ip address 172.16.8.20 255.255.255.0  
  ip ospf 1 area 102  
 
-Не получаем префикс 172.16.6.0/24 на R20
+Не получаем префикс 172.16.6.0/24 от R19
 
  R20#sh ip route  
 
