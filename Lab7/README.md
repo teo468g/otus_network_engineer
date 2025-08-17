@@ -1,8 +1,8 @@
-ISIS  
+## ISIS  
 
 ![](Topology.PNG)  
 
-Задание:
+## Задание:
 
 1. Настроите IS-IS в ISP Триада.
 2. R23 и R25 находятся в зоне 2222.
@@ -27,7 +27,7 @@ ISIS
 [R25](../Lab7/R25.txt)   
 [R26](../Lab7/R26.txt)    
 
-Проверка:
+## Проверка:
 
 R23#show clns  
 Global CLNS Information:  
