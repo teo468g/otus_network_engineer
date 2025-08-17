@@ -17,7 +17,7 @@ interface Ethernet1/0
  ip address 172.16.7.14 255.255.255.0  
  ip ospf 1 area 0  
 
-interface Loopback0
+interface Loopback0  
  ip address 10.0.0.14 255.255.255.0
  ip ospf 1 area 0
 
