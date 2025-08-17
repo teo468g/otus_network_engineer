@@ -60,9 +60,8 @@ R26                  20         R24                  Et0/2       aabb.cc01.8020
                                 R25                  Et0/1       aabb.cc01.9000  
 
 R23#sh ip route
-Gateway of last resort is not set  
-
-      10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks  
+Gateway of last resort is not set    
+10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks  
 C        10.0.0.0/24 is directly connected, Loopback0  
 L        10.0.0.23/32 is directly connected, Loopback0  
       172.19.0.0/16 is variably subnetted, 4 subnets, 2 masks  
