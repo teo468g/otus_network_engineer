@@ -1,10 +1,73 @@
 R24#sh run
+Building configuration...
 
+Current configuration : 1388 bytes
+!
+! Last configuration change at 14:21:37 UTC Sat Aug 23 2025
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
 hostname R24
 !
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
 
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 interface Loopback0
- ip address 10.0.0.24 255.255.255.0
+ ip address 10.0.0.24 255.255.255.255
+ ip router isis
 !
 interface Ethernet0/0
  description to R21
@@ -42,5 +105,32 @@ interface Ethernet1/3
 !
 router isis
  net 49.0024.1000.0000.0024.00
+ is-type level-2-only
 !
-
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end

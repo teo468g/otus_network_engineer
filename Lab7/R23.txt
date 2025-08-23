@@ -1,9 +1,72 @@
 R23#sh run
+Building configuration...
 
+Current configuration : 1356 bytes
+!
+! Last configuration change at 14:26:24 UTC Sat Aug 23 2025
+!
+version 15.4
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
 hostname R23
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
 
+
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+!
+!
+!
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
 interface Loopback0
- ip address 10.0.0.23 255.255.255.0
+ ip address 10.0.0.23 255.255.255.255
  ip router isis
 !
 interface Ethernet0/0
@@ -42,4 +105,32 @@ interface Ethernet1/3
 !
 router isis
  net 49.2222.1000.0000.0023.00
+ is-type level-2-only
 !
+no ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ login
+ transport input none
+!
+!
+end
