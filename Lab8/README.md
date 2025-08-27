@@ -50,31 +50,6 @@ C        10.0.0.18 is directly connected, Loopback0
       172.17.0.0/16 is variably subnetted, 5 subnets, 3 masks  
 D        172.17.0.0/16 [90/1536000] via 172.17.2.16, 00:43:26,Ethernet0/0  
                        [90/1536000] via 172.17.0.17, 00:43:26, Ethernet0/1  
-C        172.17.0.0/24 is directly connected, Ethernet0/1  
-L        172.17.0.18/32 is directly connected, Ethernet0/1  
-C        172.17.2.0/24 is directly connected, Ethernet0/0  
-L        172.17.2.18/32 is directly connected, Ethernet0/0  
-      192.168.1.0/24 is variably subnetted, 4 subnets, 2 masks  
-C        192.168.1.4/31 is directly connected, Ethernet0/2  
-L        192.168.1.4/32 is directly connected, Ethernet0/2  
-C        192.168.1.6/31 is directly connected, Ethernet0/3  
-L        192.168.1.6/32 is directly connected, Ethernet0/3  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Конфигурационные файлы  
 
