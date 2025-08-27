@@ -1,9 +1,9 @@
 R24#sh run
 Building configuration...
 
-Current configuration : 1388 bytes
+Current configuration : 1412 bytes
 !
-! Last configuration change at 14:21:37 UTC Sat Aug 23 2025
+! Last configuration change at 10:31:33 UTC Wed Aug 27 2025
 !
 version 15.4
 service timestamps debug datetime msec
@@ -104,8 +104,9 @@ interface Ethernet1/3
  shutdown
 !
 router isis
- net 49.0024.1000.0000.0024.00
+ net 49.0024.0100.0000.0024.00
  is-type level-2-only
+ redistribute connected
 !
 ip forward-protocol nd
 !

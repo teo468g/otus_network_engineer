@@ -1,9 +1,9 @@
 R25#sh run
 Building configuration...
 
-Current configuration : 1391 bytes
+Current configuration : 1415 bytes
 !
-! Last configuration change at 14:26:18 UTC Sat Aug 23 2025
+! Last configuration change at 10:32:12 UTC Wed Aug 27 2025
 !
 version 15.4
 service timestamps debug datetime msec
@@ -104,8 +104,9 @@ interface Ethernet1/3
  shutdown
 !
 router isis
- net 49.2222.1000.0000.0025.00
+ net 49.2222.0100.0000.0025.00
  is-type level-2-only
+ redistribute connected
 !
 no ip forward-protocol nd
 !
