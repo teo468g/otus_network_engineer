@@ -9,14 +9,14 @@
 3. R16-17 анонсируют только суммарные префиксы.
 4. Использовать EIGRP named-mode для настройки сети.
 
-1. На всех роутерах включаем именованный режим командой  
+На всех роутерах включаем именованный режим командой  
 router eigrp EIGRP  
 Создаем автономную систему:
 address-family ipv4 unicast autonomous-system 1  
 Включаем интерфейсы, на которых будет работать eigrp:  
 network 172.17.0.0 0.0.255.255  
 
-2. На R16 coздаем  address-family интерфейс в сторону R32 c маршрутом по умолчанию. 
+На R16 coздаем  address-family интерфейс в сторону R32 c маршрутом по умолчанию. 
 
 router eigrp EIGRP  
  address-family ipv4 unicast autonomous-system 1  
@@ -34,7 +34,7 @@ C        10.0.0.32 is directly connected, Loopback0
 C        172.17.4.0/24 is directly connected, Ethernet0/0  
 L        172.17.4.32/32 is directly connected, Ethernet0/0  
 
-3. на R16 и R17 создаем address-family интерфейс в сторону R18 с суммарным префиксом:
+На R16 и R17 создаем address-family интерфейс в сторону R18 с суммарным префиксом:
 
 router eigrp EIGRP  
  address-family ipv4 unicast autonomous-system 1  
