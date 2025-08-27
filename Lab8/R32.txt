@@ -1,0 +1,28 @@
+interface Loopback0
+ ip address 10.0.0.32 255.255.255.255
+!
+interface Ethernet0/0
+ description to R16
+ ip address 172.17.4.32 255.255.255.0
+!
+interface Ethernet0/1
+ no ip address
+ shutdown
+!
+interface Ethernet0/2
+ no ip address
+ shutdown
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+!
+router eigrp EIGRP
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  topology base
+  exit-af-topology
+  network 172.17.0.0
+ exit-address-family

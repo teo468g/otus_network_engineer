@@ -1,0 +1,41 @@
+
+interface Loopback0
+ ip address 10.0.0.17 255.255.255.255
+!
+interface Ethernet0/0
+ description to SW9
+ no ip address
+!
+interface Ethernet0/0.8
+ encapsulation dot1Q 8
+ ip address 172.17.3.17 255.255.255.0
+!
+interface Ethernet0/1
+ description to R18
+ ip address 172.17.0.17 255.255.255.0
+!
+interface Ethernet0/2
+ description to SW10
+ no ip address
+!
+interface Ethernet0/2.110
+ encapsulation dot1Q 110
+ ip address 172.17.2.17 255.255.255.0
+!
+interface Ethernet0/3
+ no ip address
+ shutdown
+!
+!
+router eigrp EIGRP
+ !
+ address-family ipv4 unicast autonomous-system 1
+  !
+  af-interface Ethernet0/1
+   summary-address 172.17.0.0 255.255.0.0
+  exit-af-interface
+  !
+  topology base
+  exit-af-topology
+  network 172.17.0.0
+ exit-address-family
