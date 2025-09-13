@@ -30,14 +30,12 @@ BGP соседство присутствует, маршруты принима
 R14#sh bgp ipv4 unicast summary  
 BGP router identifier 10.0.0.14, local AS number 1001  
 
-Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
-
 Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd  
 10.0.0.15       4         1001      72      90       76    0    0 00:53:00       10  
 192.168.1.1     4          101      98     106       76    0    0 01:09:00        9
  
 
-R14#sh bgp ipv4 unicast neighbors 192.168.1.1 routes
+R14#sh bgp ipv4 unicast neighbors 192.168.1.1 routes  
 BGP table version is 20, local router ID is 10.0.0.14
 
 
