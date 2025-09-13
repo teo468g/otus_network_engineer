@@ -7,7 +7,7 @@
 5. Организуете IP доступность между пограничным роутерами офисами Москва и С.-Петербург.  
 
 Приведем пример настройки bgp на паре R14 и R22.  
-R14# sh run | sec bgp 
+R14# sh run | sec bgp   
 router bgp 1001  
  bgp log-neighbor-changes  
  network 10.0.0.14 mask 255.255.255.255  
