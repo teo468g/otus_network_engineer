@@ -1,0 +1,58 @@
+hostname R15
+!
+!
+!
+!
+!
+interface Loopback0
+ ip address 10.0.0.15 255.255.255.255
+ ip ospf 1 area 0
+!
+interface Ethernet0/0
+ description to R13
+ ip address 172.16.4.15 255.255.255.0
+ ip ospf 1 area 10
+!
+interface Ethernet0/1
+ description to R12
+ ip address 172.16.5.15 255.255.255.0
+ ip ospf 1 area 10
+!
+interface Ethernet0/2
+ description to R21
+ ip address 192.168.1.2 255.255.255.254
+!
+interface Ethernet0/3
+ description to R20
+ ip address 172.16.8.15 255.255.255.0
+ ip ospf 1 area 102
+!
+interface Ethernet1/0
+ description to R14
+ ip address 172.16.7.15 255.255.255.0
+ ip ospf 1 area 0
+!
+interface Ethernet1/1
+ no ip address
+ shutdown
+!
+interface Ethernet1/2
+ no ip address
+ shutdown
+!
+interface Ethernet1/3
+ no ip address
+ shutdown
+!
+router ospf 1
+ area 10 stub
+ area 102 filter-list prefix R19 in
+!
+router bgp 1001
+ bgp log-neighbor-changes
+ network 10.0.0.15 mask 255.255.255.255
+ network 172.16.7.14 mask 255.255.255.254
+ network 192.168.1.2 mask 255.255.255.254
+ neighbor 172.16.7.14 remote-as 1001
+ neighbor 192.168.1.3 remote-as 301
+
