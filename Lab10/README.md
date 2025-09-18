@@ -70,16 +70,10 @@ Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State
 
  ## 3. Настройте офиса Москва так, чтобы приоритетным провайдером стал Ламас.  
 
-После увеличения local-preference на R15 приоритетным выходом из AS 1001 становится R21. 
+После увеличения local-preference на R15 приоритетным выходом из AS 1001 становится R21.   
 R15(config-router)# bgp default local-preference 500   
 
-R14#  sh ip bgp
-BGP table version is 29, local router ID is 10.0.0.14
-Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
-              r RIB-failure, S Stale, m multipath, b backup-path, f RT-Filter,
-              x best-external, a additional-path, c RIB-compressed,
-Origin codes: i - IGP, e - EGP, ? - incomplete
-RPKI validation codes: V valid, I invalid, N Not found
+R14#  sh ip bgp  
 
      Network          Next Hop            Metric LocPrf Weight Path
  *>  10.0.0.14/32     0.0.0.0                  0         32768 i
