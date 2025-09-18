@@ -23,11 +23,6 @@ router bgp 1001
  neighbor 172.16.7.14 remote-as 1001  
  neighbor 192.168.1.3 remote-as 301 
 
- R14#sh bgp su  
-Neighbor        V           AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
-10.0.0.15       4         1001     174     178       29    0    0 02:30:12       13
- 192.168.1.1     4          101     181     175       29    0    0 02:30:12       11
-
  R14#sh bgp ipv4 u nei 10.0.0.15
 BGP neighbor is 10.0.0.15,  remote AS 1001, internal link
   BGP version 4, remote router ID 10.0.0.15
