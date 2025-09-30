@@ -33,7 +33,7 @@ ip prefix-list LIST_OUT1 seq 20 permit 172.17.0.0/16
 
 router bgp 101  
  neighbor 192.168.1.0 default-originate  
- neighbor 192.168.1.0 soft-reconfiguration inbound 
+ neighbor 192.168.1.0 soft-reconfiguration inbound  
  neighbor 192.168.1.0 prefix-list DEF_OUT1 out
 
  ip prefix-list DEF_OUT1 seq 10 permit 0.0.0.0/0    
