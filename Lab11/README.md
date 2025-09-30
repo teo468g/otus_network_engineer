@@ -64,7 +64,7 @@ R21# neighbor 192.168.1.2 prefix-list DEF_OUT1 out
 ip prefix-list DEF_OUT1 seq 10 permit 0.0.0.0/0  
 ip prefix-list DEF_OUT1 seq 20 permit 172.17.0.0/16  
 
-R15(config-router)#nei 192.168.1.3 soft-reconfiguration inbound 
+R15(config-router)#nei 192.168.1.3 soft-reconfiguration inbound  
 R15#sh ip bgp neighbors 192.168.1.3 received-routes  
 
      Network          Next Hop            Metric LocPrf Weight Path  
