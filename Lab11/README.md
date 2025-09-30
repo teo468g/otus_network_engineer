@@ -25,9 +25,9 @@ BGP table version is 22, local router ID is 10.0.0.14
 R18# router bgp 2042 
 neighbor 192.168.1.7 prefix-list LIST_OUT1 out  
 
-ip prefix-list LIST_OUT1 seq 10 permit 192.168.1.4/31
-ip prefix-list LIST_OUT1 seq 15 permit 10.0.0.15/32  
-ip prefix-list LIST_OUT1 seq 20 permit 172.17.0.0/16  
+ip prefix-list LIST_OUT1 seq 10 permit 192.168.1.4/31  
+ip prefix-list LIST_OUT1 seq 15 permit 10.0.0.15/32    
+ip prefix-list LIST_OUT1 seq 20 permit 172.17.0.0/16    
    
 ## 3. Настроить провайдера Киторн так, чтобы в офис Москва отдавался только маршрут по умолчанию.  
 
