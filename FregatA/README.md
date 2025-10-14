@@ -76,6 +76,36 @@ Total Peer(s): 4
 
 ### 3. Настройть BGP с номером AS 65000.  
 
+[R1]dis bgp peer  
+
+ BGP local router ID : 20.0.0.1  
+ Local AS number : 65000  
+ Total number of peers : 1		  Peers in established state : 1  
+
+  Peer            V          AS  MsgRcvd  MsgSent  OutQ  Up/Down       State PrefRcv  
+
+  20.0.0.3        4       65000       64       73     0 00:48:30 Established      3  
+
+  [R1]dis bgp routing-table peer 20.0.0.3 advertised-routes  
+
+ BGP Local router ID is 20.0.0.1   
+ Total Number of Routes: 1  
+      Network            NextHop        MED        LocPrf    PrefVal Path/Ogn  
+
+ *>   20.0.0.1/32        20.0.0.1        0          100        0      i  
+
+[R1]dis bgp routing-table peer 20.0.0.3 received-routes   
+
+ BGP Local router ID is 20.0.0.1 
+ Total Number of Routes: 3  
+      Network            NextHop        MED        LocPrf    PrefVal Path/Ogn  
+
+ *>i  10.0.0.4/30        20.0.0.3        0          100        0      ?  
+   i  20.0.0.3/32        20.0.0.3        0          100        0      i  
+ *>i  192.168.2.0        20.0.0.3        0          100        0      ?  
+
+ Связность в iBGP между R1 и R3 установлена, обмен префиксами есть.  
+
 ### 4. Между VPC1 И VPC3 настроить псевдопровод (VPWS LDP). Коммутаторы SW1 и SW2 уже настроены, их трогать не надо. На R1 трафик приходит в qinq с метками 100 и 200, на R3 в dot1q с меткой 300.
 
 ### 5. Между VPC2 и VPC4 настроить L3VPN.  
