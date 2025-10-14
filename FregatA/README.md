@@ -75,7 +75,7 @@ router_R3       GE0/0/2            router_R2.02      Up   23s      L2(L1L2) 64
 Total Peer(s): 4  
 
 ### 3. Настройть BGP с номером AS 65000.  
-Настройки на R1 и К3 аналогичны  
+Настройки на R1 и R3 аналогичны  
 bgp 65000  
  router-id 20.0.0.1  
  peer 20.0.0.3 as-number 65000  
@@ -84,7 +84,6 @@ bgp 65000
  ipv4-family unicast  
   network 20.0.0.1 255.255.255.255  
   peer 20.0.0.3 enable  
-
 
 [R1]dis bgp peer  
 
