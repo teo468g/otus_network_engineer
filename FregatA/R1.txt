@@ -1,0 +1,138 @@
+<R1>dis cur
+#
+sysname R1
+#
+vlan batch 100 200
+#
+multicast routing-enable
+#
+ip vpn-instance FregatA
+ ipv4-family
+  route-distinguisher 100:1
+  vpn-target 100:1 export-extcommunity
+  vpn-target 100:1 import-extcommunity
+#
+mpls lsr-id 20.0.0.1
+mpls
+#
+mpls l2vpn
+#
+vsi FREGATA
+ pwsignal bgp
+  route-distinguisher 100:1
+  vpn-target 100:1 import-extcommunity
+  vpn-target 100:1 export-extcommunity
+ encapsulation ethernet
+ mac-learn-style qualify
+#
+vsi TEST
+ pwsignal ldp
+  vsi-id 555
+  peer 20.0.0.3
+#
+mpls ldp
+ graceful-restart
+#
+#
+mpls ldp remote-peer 20.0.0.3
+ remote-ip 20.0.0.3
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admin password cipher _~f,*!}/<!3IF$':[285(!I#
+ local-user admin service-type http
+#
+isis 100
+ network-entity 49.0001.0200.0000.0001.00
+ is-name router_R1
+#
+firewall zone Local
+ priority 16
+#
+interface Eth-Trunk1
+ ip address 10.0.0.1 255.255.255.252
+ isis enable 100
+ pim dm
+ mpls
+ mpls ldp
+#
+interface Ethernet0/0/0
+ ip address 192.168.1.1 255.255.255.0
+ isis enable 100
+ pim dm
+ igmp enable
+#
+interface Ethernet0/0/1
+ l2 binding vsi TEST
+#
+interface Serial0/0/0
+ link-protocol ppp
+#
+interface Serial0/0/1
+ link-protocol ppp
+#
+interface Serial0/0/2
+ link-protocol ppp
+#
+interface Serial0/0/3
+ link-protocol ppp
+#
+interface GigabitEthernet0/0/0
+ eth-trunk 1
+#
+interface GigabitEthernet0/0/1
+ eth-trunk 1
+#
+interface GigabitEthernet0/0/2
+#
+interface GigabitEthernet0/0/2.100
+ vlan-type dot1q 100
+ mpls l2vc 20.0.0.3 100
+#
+interface GigabitEthernet0/0/3
+ ip binding vpn-instance FregatA
+ ip address 40.0.0.1 255.255.255.252
+#
+wlan
+#
+interface NULL0
+#
+interface LoopBack0
+ ip address 20.0.0.1 255.255.255.255
+ isis enable 100
+#
+bgp 65000
+ router-id 20.0.0.1
+ peer 20.0.0.3 as-number 65000
+ peer 20.0.0.3 connect-interface LoopBack0
+ #
+ ipv4-family unicast
+  undo synchronization
+  network 20.0.0.1 255.255.255.255
+  peer 20.0.0.3 enable
+ #
+ vpls-family
+  policy vpn-target
+ #
+ l2vpn-ad-family
+  policy vpn-target
+  peer 20.0.0.3 enable
+ #
+ ipv4-family vpnv4
+  policy vpn-target
+  peer 20.0.0.3 enable
+ #
+ ipv4-family vpn-instance FregatA
+  import-route direct
+#
+pim
+#
+user-interface con 0
+user-interface vty 0 4
+user-interface vty 16 20
+#
+return

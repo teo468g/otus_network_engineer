@@ -1,0 +1,101 @@
+<R2>dis cur
+#
+sysname R2
+#
+mpls lsr-id 20.0.0.2
+mpls
+#
+mpls ldp
+#
+#
+aaa
+ authentication-scheme default
+ authorization-scheme default
+ accounting-scheme default
+ domain default
+ domain default_admin
+ local-user admin password cipher 7FMP-R8Zy0:z9:%F`[a=O!4#
+ local-user admin service-type http
+#
+isis 100
+ network-entity 49.0001.0200.0000.0002.00
+ is-name router_R2
+#
+firewall zone Local
+ priority 16
+#
+interface Eth-Trunk1
+ ip address 10.0.0.2 255.255.255.252
+ isis enable 100
+ mpls
+ mpls ldp
+#
+interface Ethernet0/0/0
+#
+interface Ethernet0/0/1
+#
+interface Serial0/0/0
+ link-protocol ppp
+#
+interface Serial0/0/1
+ link-protocol ppp
+#
+interface Serial0/0/2
+ link-protocol ppp
+#
+interface Serial0/0/3
+ link-protocol ppp
+#
+interface GigabitEthernet0/0/0
+ eth-trunk 1
+#
+interface GigabitEthernet0/0/1
+ eth-trunk 1
+#
+interface GigabitEthernet0/0/2
+ ip address 10.0.0.5 255.255.255.252
+ isis enable 100
+ mpls
+ mpls ldp
+#
+interface GigabitEthernet0/0/3
+ ip address 10.0.0.9 255.255.255.252
+#
+wlan
+#
+interface NULL0
+#
+interface LoopBack0
+ ip address 20.0.0.2 255.255.255.255
+ isis enable 100
+#
+bgp 65000
+ router-id 20.0.0.2
+ peer 10.0.0.10 as-number 65001
+ #
+ ipv4-family unicast
+  undo synchronization
+  peer 10.0.0.10 enable
+  peer 10.0.0.10 route-policy BGP_INPUT import
+#
+route-policy BGP_INPUT permit node 10
+ if-match community-filter 1
+ apply local-preference 200
+#
+route-policy BGP_INPUT permit node 20
+ if-match community-filter 2
+ apply local-preference 200
+#
+route-policy BGP_INPUT permit node 30
+ if-match community-filter 3
+ apply community 65000:200 additive
+#
+ip community-filter 1 permit 65001:1
+ip community-filter 2 permit 65001:2
+ip community-filter 3 permit 65001:200
+#
+user-interface con 0
+user-interface vty 0 4
+user-interface vty 16 20
+#
+return
