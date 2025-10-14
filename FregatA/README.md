@@ -149,30 +149,24 @@ interface GigabitEthernet0/0/2.100
   VC ID                : 100  
   VC type              : VLAN  
   destination          : 20.0.0.3  
-  local VC label       : 1025         remote VC label      : 1025  
-  control word         : disable  
-  forwarding entry     : exist  
-  local group ID       : 0  
-  manual fault         : not set  
-  active state         : active  
-  OAM Protocol         : --  
-  OAM Status           : --  
-  OAM Fault Type       : --  
-  PW APS ID            : 0  
-  PW APS Status        : --  
-  TTL Value            : 1  
-  link state           : up  
-  local VC MTU         : 1500         remote VC MTU        : 1500  
-  tunnel policy name   : --   
-  PW template name     : --  
-  primary or secondary : primary  
-  load balance type    : flow  
-  Access-port          : false  
+  
   create time          : 0 days, 1 hours, 49 minutes, 0 seconds  
   up time              : 0 days, 0 hours, 3 minutes, 25 seconds  
   last change time     : 0 days, 0 hours, 3 minutes, 25 seconds  
   VC last up time      : 2025/10/14 22:47:10  
   VC total up time     : 0 days, 1 hours, 48 minutes, 6 seconds  
+
+  [R1] dis mpls ldp peer   
+ 
+ LDP Peer Information in Public network  
+ A '*' before a peer means the peer is being deleted.    
+ 
+ PeerID                 TransportAddress   DiscoverySource  
+  
+ 20.0.0.2:0             20.0.0.2           Eth-Trunk1  
+ 20.0.0.3:0             20.0.0.3           Remote Peer : 20.0.0.3  
+ 
+ TOTAL: 2 Peer(s) Found.
 
  ![](../FregatA/Configs/Ping1.PNG)  
 
