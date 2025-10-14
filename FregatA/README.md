@@ -211,6 +211,29 @@ interface GigabitEthernet0/0/3
 Результат: успешный обмен пакетами между VPC2 и VPC4  
 
 ### 6. Между VPC5 и VPC6 настроить VPLS (BGP).  
+Создать VPLS BGP не удалось. В данной версии eNSP в секции l2vpn-ad-family нет команды signaling vpls или peer signaling vpls. Vsi находится в состоянии down.  
+Выполнил L2VPN VPLS на протоколе LDP.  
+
+Создаем виртуальный коммутатор c сигнализацией на ldp, указываем id и ip удаленного хоста  
+
+vsi TEST  
+ pwsignal ldp  
+  vsi-id 555  
+  peer 20.0.0.3 
+ 
+Привязываем vsi к интерфейсу  
+interface Ethernet0/0/1   
+ l2 binding vsi TEST  
+
+[R1]dis vsi name TEST  
+Vsi                             Mem    PW   Mac       Encap     Mtu   Vsi       
+Name                            Disc   Type Learn     Type      Value State     
+
+TEST                            --     ldp  unqualify vlan      1500  up   
+
+![](../FregatA/Configs/Ping3.PNG)     
+
+
 
 ### 7. Между R2 и R4 настроить EBGP. На R2 применить политику на импорт, которая будет для маршрутов с community 65001:1,65001:2 применять local-preference 200.  Для маршрутов с community 65001:100 добавлять community 65000:200. R4 настроен, его трогать не надо.  
 
