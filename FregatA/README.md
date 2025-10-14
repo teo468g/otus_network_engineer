@@ -169,19 +169,46 @@ interface GigabitEthernet0/0/2.100
 
  ![](../FregatA/Configs/Ping1.PNG)  
 
+### 5. Между VPC2 и VPC4 настроить L3VPN.   
 
+Настраиваем MP-iBGP между R1 и R3   
+ ipv4-family vpnv4  
+    peer 20.0.0.3 enable  
 
+  Конфигурируем vpn-instance, RT и RD   
+ip vpn-instance FregatA
+ ipv4-family
+  route-distinguisher 100:1
+  vpn-target 100:1 export-extcommunity
+  vpn-target 100:1 import-extcommunity  
+ipv4-family vpn-instance FregatA  
+  import-route direct  
 
+Привязываем vpn-instance к интерфейсу  
+interface GigabitEthernet0/0/3  
+ ip binding vpn-instance FregatA  
+ ip address 40.0.0.1 255.255.255.252  
 
+Проверяем vpn-instance FregatA:  
+ [R1]dis ip vpn-instance verbose  
+ Total VPN-Instances configured : 1  
 
+ VPN-Instance Name and ID : FregatA, 1  
+  Interfaces : GigabitEthernet0/0/3  
+ Address family ipv4  
+  Create date : 2025-10-14 21:01:35-08:00  
+  Up time : 0 days, 02 hours, 26 minutes and 53 seconds  
+  Route Distinguisher : 100:1  
+  Export VPN Targets :  100:1  
+  Import VPN Targets :  100:1  
+  Label Policy : label per route  
+  The diffserv-mode Information is : uniform     
+  The ttl-mode Information is : pipe  
+  Log Interval : 5  
 
+  ![](../FregatA/Configs/Ping2.PNG)
 
-
-
-
-
-### 5. Между VPC2 и VPC4 настроить L3VPN.  
-
+Результат: успешный обмен пакетами между VPC2 и VPC4  
 
 ### 6. Между VPC5 и VPC6 настроить VPLS (BGP).  
 
