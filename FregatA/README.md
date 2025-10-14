@@ -176,13 +176,13 @@ interface GigabitEthernet0/0/2.100
     peer 20.0.0.3 enable  
 
   Конфигурируем vpn-instance, RT и RD   
-ip vpn-instance FregatA
- ipv4-family
-  route-distinguisher 100:1
-  vpn-target 100:1 export-extcommunity
-  vpn-target 100:1 import-extcommunity  
-ipv4-family vpn-instance FregatA  
-  import-route direct  
+ip vpn-instance FregatA  
+ ipv4-family  
+  route-distinguisher 100:1  
+  vpn-target 100:1 export-extcommunity  
+  vpn-target 100:1 import-extcommunity    
+ipv4-family vpn-instance FregatA    
+  import-route direct    
 
 Привязываем vpn-instance к интерфейсу  
 interface GigabitEthernet0/0/3  
@@ -194,9 +194,9 @@ interface GigabitEthernet0/0/3
  Total VPN-Instances configured : 1  
 
  VPN-Instance Name and ID : FregatA, 1  
-  Interfaces : GigabitEthernet0/0/3  
+  Interfaces : GigabitEthernet0/0/3    
  Address family ipv4  
-  Create date : 2025-10-14 21:01:35-08:00  
+  Create date : 2025-10-14 21:01:35-08:00    
   Up time : 0 days, 02 hours, 26 minutes and 53 seconds  
   Route Distinguisher : 100:1  
   Export VPN Targets :  100:1  
