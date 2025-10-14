@@ -1,12 +1,12 @@
-## Тестовое задание
+### Тестовое задание
 
 ![](Test.PNG)  
 
-Лабораторный стенд
+### Лабораторный стенд
 
 ![](Topology.PNG)  
 
-Конфигурация оборудования  
+### Конфигурация оборудования  
 
 [R1](../FregatA/Configs/R1.txt)  
 [R2](../FregatA/Configs/R2.txt)  
@@ -16,22 +16,75 @@
 [SW2](../FregatA/Configs/SW2.txt)  
 
 
-1. Между R1 и R2 настроить LAG с LACP.  
+### 1. Между R1 и R2 настроить LAG с LACP.  
+Перенесем ip адресацию на оборудование и создадим Eth-Trunk1.  
 
-2. Настроить в качестве внутреннего протокола маршрутизации ISIS.  
+R1 dis int eth-tr1  
+Eth-Trunk1 current state : UP  
+Line protocol current state : UP    
+Last line protocol up time : 2025-10-14 21:01:46 UTC-08:00  
+Description:  
+Route Port,Hash arithmetic : According to flow,Maximal BW: 2G, Current BW: 2G, T
+he Maximum Transmit Unit is 1500  
+Internet Address is 10.0.0.1/30  
+IP Sending Frames' Format is PKTFMT_ETHNT_2, Hardware address is 5489-98be-1520   
+Physical is ETH_TRUNK  
+Current system time: 2025-10-14 21:13:27-08:00  
+    Last 300 seconds input rate 3048 bits/sec, 0 packets/sec  
+    Last 300 seconds output rate 14352 bits/sec, 1 packets/sec  
+    Realtime 0 seconds input rate 0 bits/sec, 0 packets/sec  
+    Realtime 0 seconds output rate 0 bits/sec, 0 packets/sec  
+    Input: 598 packets,280166 bytes  
+           274 unicast,0 broadcast,324 multicast  
+           0 errors,0 unknownprotocol  
+    Output:1396 packets,1242281 bytes  
+           281 unicast,1 broadcast,1114 multicast  
+           0 errors  
+    Input bandwidth utilization  :    0%  
+    Output bandwidth utilization :    0%  
+ 
+PortName                      Status      Weight  
 
-3. Настройть BGP с номером AS 65000.  
+GigabitEthernet0/0/0          UP          1  
+GigabitEthernet0/0/1          UP          1  
 
-4. Между VPC1 И VPC3 настроить псевдопровод (VPWS LDP). Коммутаторы SW1 и SW2 уже настроены, их трогать не надо. На R1 трафик приходит в qinq с метками 100 и 200, на R3 в dot1q с меткой 300.
+The Number of Ports in Trunk : 2  
+The Number of UP Ports in Trunk : 2  
 
-5. Между VPC2 и VPC4 настроить L3VPN.  
 
 
-6. Между VPC5 и VPC6 настроить VPLS (BGP).  
+### 2. Настроить в качестве внутреннего протокола маршрутизации ISIS.  
 
-7. Между R2 и R4 настроить EBGP. На R2 применить политику на импорт, которая будет для маршрутов с community 65001:1,65001:2 применять local-preference 200.
- Для маршрутов с community 65001:100 добавлять community 65000:200. R4 настроен, его трогать не надо.  
+Настраиваем NET запись на всех роутерах и добавлем ISIS на NNI интерфейсы.  
+isis 100  
+ network-entity 49.0001.0200.0000.0001.00  
 
-8. Настроить PIM/IGMP, что бы мультикаст поток с адресом 224.0.2.12 (источник 192.168.1.2) доходил до клиента (адрес 192.168.2.2). Источник и клиент уже настроены, их трогать не надо.
+L1L2 соседство установлено.
+
+ R2 dis isis peer
+
+                         Peer information for ISIS(100)  
+
+  System Id     Interface          Circuit Id       State HoldTime Type     PRI  
+
+router_R1       Eth-Trunk1         router_R1.01      Up   9s       L1(L1L2) 64   
+router_R1       Eth-Trunk1         router_R1.01      Up   9s       L2(L1L2) 64   
+router_R3       GE0/0/2            router_R2.02      Up   22s      L1(L1L2) 64   
+router_R3       GE0/0/2            router_R2.02      Up   23s      L2(L1L2) 64   
+
+Total Peer(s): 4  
+
+### 3. Настройть BGP с номером AS 65000.  
+
+### 4. Между VPC1 И VPC3 настроить псевдопровод (VPWS LDP). Коммутаторы SW1 и SW2 уже настроены, их трогать не надо. На R1 трафик приходит в qinq с метками 100 и 200, на R3 в dot1q с меткой 300.
+
+### 5. Между VPC2 и VPC4 настроить L3VPN.  
+
+
+### 6. Между VPC5 и VPC6 настроить VPLS (BGP).  
+
+### 7. Между R2 и R4 настроить EBGP. На R2 применить политику на импорт, которая будет для маршрутов с community 65001:1,65001:2 применять local-preference 200.  Для маршрутов с community 65001:100 добавлять community 65000:200. R4 настроен, его трогать не надо.  
+
+### 8. Настроить PIM/IGMP, что бы мультикаст поток с адресом 224.0.2.12 (источник 192.168.1.2) доходил до клиента (адрес 192.168.2.2). Источник и клиент уже настроены, их трогать не надо.
 
 
