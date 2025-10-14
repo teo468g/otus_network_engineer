@@ -8,12 +8,12 @@
 
 Конфигурация оборудования  
 
-[R1](R1.txt)  
-[R2](R2.txt)  
-[R3](R3.txt)  
-[R4](R4.txt)  
-[SW1](SW1.txt)  
-[SW2](SW2.txt)  
+[R1](../FregatA/Configs/R1.txt)  
+[R2](../FregatA/Configs/R2.txt)  
+[R3](../FregatA/Configs/R3.txt)  
+[R4](../FregatA/Configs/R4.txt)  
+[SW1](../FregatA/Configs/SW1.txt)  
+[SW2](../FregatA/Configs/SW2.txt)  
 
 
 1. Между R1 и R2 настроить LAG с LACP.  
