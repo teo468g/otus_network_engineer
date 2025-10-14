@@ -75,6 +75,16 @@ router_R3       GE0/0/2            router_R2.02      Up   23s      L2(L1L2) 64
 Total Peer(s): 4  
 
 ### 3. Настройть BGP с номером AS 65000.  
+Настройки на R1 и К3 аналогичны  
+bgp 65000  
+ router-id 20.0.0.1  
+ peer 20.0.0.3 as-number 65000  
+ peer 20.0.0.3 connect-interface LoopBack0  
+ #
+ ipv4-family unicast  
+  network 20.0.0.1 255.255.255.255  
+  peer 20.0.0.3 enable  
+
 
 [R1]dis bgp peer  
 
@@ -107,6 +117,8 @@ Total Peer(s): 4
  Связность в iBGP между R1 и R3 установлена, обмен префиксами есть.  
 
 ### 4. Между VPC1 И VPC3 настроить псевдопровод (VPWS LDP). Коммутаторы SW1 и SW2 уже настроены, их трогать не надо. На R1 трафик приходит в qinq с метками 100 и 200, на R3 в dot1q с меткой 300.
+
+
 
 ### 5. Между VPC2 и VPC4 настроить L3VPN.  
 
