@@ -118,8 +118,7 @@ bgp 65000
 ### 4. Между VPC1 И VPC3 настроить псевдопровод (VPWS LDP). Коммутаторы SW1 и SW2 уже настроены, их трогать не надо. На R1 трафик приходит в qinq с метками 100 и 200, на R3 в dot1q с меткой 300.
 
 На всех роутерах включаем глобально mpls и настраиваем lsr-id  
-sysname R2
-#  
+sysname R2  
 mpls lsr-id 20.0.0.2  
 mpls  
 
@@ -135,7 +134,55 @@ interface GigabitEthernet0/0/2.100
  vlan-type dot1q 100  
  mpls l2vc 20.0.0.3 100  
 
- 
+Результат: псевдопровод в состоянии UP и успешный обмен пакетами между VPC1 и VPC3  
+
+[R1]dis mpls l2vc  
+ Total LDP VC : 1     1 up       0 down   
+
+ *client interface     : GigabitEthernet0/0/2.100 is up  
+  Administrator PW     : no  
+  session state        : up  
+  AC status            : up  
+  VC state             : up  
+  Label state          : 0  
+  Token state          : 0  
+  VC ID                : 100  
+  VC type              : VLAN  
+  destination          : 20.0.0.3  
+  local VC label       : 1025         remote VC label      : 1025  
+  control word         : disable  
+  forwarding entry     : exist  
+  local group ID       : 0  
+  manual fault         : not set  
+  active state         : active  
+  OAM Protocol         : --  
+  OAM Status           : --  
+  OAM Fault Type       : --  
+  PW APS ID            : 0  
+  PW APS Status        : --  
+  TTL Value            : 1  
+  link state           : up  
+  local VC MTU         : 1500         remote VC MTU        : 1500  
+  tunnel policy name   : --   
+  PW template name     : --  
+  primary or secondary : primary  
+  load balance type    : flow  
+  Access-port          : false  
+  create time          : 0 days, 1 hours, 49 minutes, 0 seconds  
+  up time              : 0 days, 0 hours, 3 minutes, 25 seconds  
+  last change time     : 0 days, 0 hours, 3 minutes, 25 seconds  
+  VC last up time      : 2025/10/14 22:47:10  
+  VC total up time     : 0 days, 1 hours, 48 minutes, 6 seconds  
+
+ ![](../FregatA/Configs/Ping1.PNG)  
+
+
+
+
+
+
+
+
 
 
 
