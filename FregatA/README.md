@@ -59,7 +59,7 @@ The Number of UP Ports in Trunk : 2
 isis 100  
  network-entity 49.0001.0200.0000.0001.00  
 
-L1L2 соседство установлено:
+L1L2 соседство установлено, есть обмен маршрутной информацией:
 
  R2 dis isis peer
 
@@ -73,6 +73,40 @@ router_R3       GE0/0/2            router_R2.02      Up   22s      L1(L1L2) 64
 router_R3       GE0/0/2            router_R2.02      Up   23s      L2(L1L2) 64   
 
 Total Peer(s): 4  
+
+R1>dis isis route 
+
+                        Route information for ISIS(100)
+                        -------------------------------
+
+                       ISIS(100) Level-1 Forwarding Table
+                       ----------------------------------
+
+IPV4 Destination     IntCost    ExtCost ExitInterface   NextHop         Flags  
+
+10.0.0.0/30          10         NULL    Eth-Trunk1      Direct          D/-/L/-  
+192.168.2.0/24       30         NULL    Eth-Trunk1      10.0.0.2        A/-/L/-  
+192.168.1.0/24       10         NULL    Eth0/0/0        Direct          D/-/L/-  
+10.0.0.4/30          20         NULL    Eth-Trunk1      10.0.0.2        A/-/L/-  
+20.0.0.3/32          20         NULL    Eth-Trunk1      10.0.0.2        A/-/L/-  
+20.0.0.2/32          10         NULL    Eth-Trunk1      10.0.0.2        A/-/L/-  
+20.0.0.1/32          0          NULL    Loop0           Direct          D/-/L/-  
+     Flags: D-Direct, A-Added to URT, L-Advertised in LSPs, S-IGP Shortcut,
+                               U-Up/Down Bit Set
+
+
+                       ISIS(100) Level-2 Forwarding Table
+                      
+
+IPV4 Destination     IntCost    ExtCost ExitInterface   NextHop         Flags  
+ 
+10.0.0.0/30          10         NULL    Eth-Trunk1      Direct          D/-/L/-  
+192.168.2.0/24       30         NULL     
+192.168.1.0/24       10         NULL    Eth0/0/0        Direct          D/-/L/-  
+10.0.0.4/30          20         NULL     
+20.0.0.3/32          20         NULL     
+20.0.0.2/32          10         NULL     
+20.0.0.1/32          0          NULL    Loop0           Direct          D/-/L/-  
 
 ### 3. Настройть BGP с номером AS 65000.  
 Настройки на R1 и R3 аналогичны  
@@ -236,7 +270,61 @@ TEST                            --     ldp  unqualify vlan      1500  up
 
 
 ### 7. Между R2 и R4 настроить EBGP. На R2 применить политику на импорт, которая будет для маршрутов с community 65001:1,65001:2 применять local-preference 200.  Для маршрутов с community 65001:100 добавлять community 65000:200. R4 настроен, его трогать не надо.  
+Настраиваем EBGP между R2 и R4 
+bgp 65000  
+ router-id 20.0.0.2  
+ peer 10.0.0.10 as-number 65001
+
+ bgp 65001  
+ router-id 20.0.0.4  
+ peer 10.0.0.9 as-number 65000 
+
+Создаем список сообществ на R2 
+ip community-filter 1 permit 65001:1  
+ip community-filter 2 permit 65001:2  
+ip community-filter 3 permit 65001:100  
+
+Создаем route-map BGP_INPUT на R2  
+route-policy BGP_INPUT permit node 10  
+ if-match community-filter 1  
+ apply local-preference 200  
+route-policy BGP_INPUT permit node 20  
+ if-match community-filter 2  
+ apply local-preference 200  
+route-policy BGP_INPUT permit node 30  
+ if-match community-filter 3  
+ apply community 65000:200 additive  
+
+Применяем route-map BGP_INPUT на R2
+ ipv4-family unicast
+  peer 10.0.0.10 enable
+  peer 10.0.0.10 route-policy BGP_INPUT import
 
 ### 8. Настроить PIM/IGMP, что бы мультикаст поток с адресом 224.0.2.12 (источник 192.168.1.2) доходил до клиента (адрес 192.168.2.2). Источник и клиент уже настроены, их трогать не надо.
+На всех роутерах включаем глобально маршрутизацию мультикаст трафика multicast routing-enable и протокол PIM.    
+
+На всех интерфейсах включаем сжатый режим pim dm.  
+
+На клиентском интерфейсе R3 Ethernet0/0/0 включам протокол igmp для присоединения к мульткастовой группе.  
+
+igmp enable
+ igmp static-group 224.0.2.12 source 192.168.1.2
+
+Проверяем на R3:  
+[R3]dis pim neighbor   
+ VPN-Instance: public net  
+ Total Number of Neighbors = 1  
+
+ Neighbor        Interface           Uptime   Expires  Dr-Priority  BFD-Session  
+ 10.0.0.5        GE0/0/2             00:52:27 00:01:20 1            N  
+
+ [R3]dis igmp group 224.0.2.12 static   
+Static join group information of VPN-Instance: public net   
+ Total 1 entry  
+ Total 1 entry matched, Total 1 active entry  
+  Group Address   Source Address  Interface             State     Expires      
+  224.0.2.12      192.168.1.2     Eth0/0/0              UP        never   
+
+  R3 успешно подключился к мультикастовой группе 224.0.2.12
 
 

@@ -2,6 +2,8 @@
 #
 sysname R2
 #
+multicast routing-enable
+#
 mpls lsr-id 20.0.0.2
 mpls
 #
@@ -14,7 +16,7 @@ aaa
  accounting-scheme default
  domain default
  domain default_admin
- local-user admin password cipher 7FMP-R8Zy0:z9:%F`[a=O!4#
+ local-user admin password cipher _HKiN-Koq!@X,k6.E\Z,1a(#
  local-user admin service-type http
 #
 isis 100
@@ -27,6 +29,7 @@ firewall zone Local
 interface Eth-Trunk1
  ip address 10.0.0.2 255.255.255.252
  isis enable 100
+ pim dm
  mpls
  mpls ldp
 #
@@ -55,6 +58,7 @@ interface GigabitEthernet0/0/1
 interface GigabitEthernet0/0/2
  ip address 10.0.0.5 255.255.255.252
  isis enable 100
+ pim dm
  mpls
  mpls ldp
 #
@@ -92,7 +96,7 @@ route-policy BGP_INPUT permit node 30
 #
 ip community-filter 1 permit 65001:1
 ip community-filter 2 permit 65001:2
-ip community-filter 3 permit 65001:200
+ip community-filter 3 permit 65001:100
 #
 user-interface con 0
 user-interface vty 0 4

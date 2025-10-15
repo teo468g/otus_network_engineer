@@ -56,7 +56,6 @@ bgp 65001
   network 0.0.0.0
   network 20.0.0.0
   network 20.0.0.4 255.255.255.255
-  import-route direct route-policy BGO_OUT
   peer 10.0.0.9 enable
   peer 10.0.0.9 advertise-community
 #
