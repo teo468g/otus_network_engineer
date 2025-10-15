@@ -114,7 +114,7 @@ bgp 65000
  router-id 20.0.0.1  
  peer 20.0.0.3 as-number 65000  
  peer 20.0.0.3 connect-interface LoopBack0  
- #
+ 
  ipv4-family unicast  
   network 20.0.0.1 255.255.255.255  
   peer 20.0.0.3 enable  
