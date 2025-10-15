@@ -159,7 +159,7 @@ mpls
 Включаем протокол ldp  глобально и на NNi интерфейсах   
 mpls ldp  
 
-На R1 и R2 yастраиваем удаленный хост и привязываем псевдопровод к сабинтерфейсу 
+На R1 и R2 настраиваем удаленный хост и привязываем псевдопровод к сабинтерфейсу  
 mpls ldp remote-peer 20.0.0.3  
  remote-ip 20.0.0.3    
 
@@ -295,7 +295,7 @@ route-policy BGP_INPUT permit node 30
  if-match community-filter 3  
  apply community 65000:200 additive  
 
-Применяем route-map BGP_INPUT на R2
+Применяем route-map BGP_INPUT на R2  
  ipv4-family unicast
   peer 10.0.0.10 enable
   peer 10.0.0.10 route-policy BGP_INPUT import
