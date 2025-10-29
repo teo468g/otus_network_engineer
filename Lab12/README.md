@@ -30,7 +30,8 @@ interface Loopback0
  ip virtual-reassembly in  
  ip ospf network point-to-point  
  ip ospf 1 area 101  
-!
+
+
 interface Ethernet0/0  
  description to R14  
  ip address 172.16.6.19 255.255.255.0  
