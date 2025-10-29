@@ -5,7 +5,7 @@
 [R15](../Lab12/Configs/R15.txt)  
 [R18](../Lab12/Configs/R18.txt)  
 [R19](../Lab12/Configs/R19.txt)  
-[R20](../Lab12/Configs/R20.txt) 
+[R20](../Lab12/Configs/R20.txt)   
 [R28](../Lab12/Configs/R28.txt) 
 
 
