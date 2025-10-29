@@ -22,7 +22,7 @@ Pro Inside global      Inside local       Outside local      Outside global
 --- 10.0.0.15          172.16.80.21       ---                ---  
 
 4. Настроите NAT так, чтобы R19 был доступен с любого узла для удаленного управления.  
-interface Ethernet0/0  
+ 
  R19  
 interface Loopback0  
  ip address 10.0.0.19 255.255.255.255  
