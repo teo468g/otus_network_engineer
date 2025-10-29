@@ -1,3 +1,13 @@
+Конфигурационные файлы  
+[R12](../Lab12/Configs/R12.txt)  
+[R13](../Lab12/Configs/R13.txt)  
+[R14](../Lab12/Configs/R14.txt)  
+[R15](../Lab12/Configs/R15.txt)  
+[R18](../Lab12/Configs/R18.txt)  
+[R19](../Lab12/Configs/R19.txt)  
+[R20](../Lab12/Configs/R20.txt) 
+
+
 1. Настроите NAT(PAT) на R14 и R15. Трансляция должна осуществляться в адрес автономной системы AS1001. 
 
 R14#sh ip nat tr  
@@ -103,8 +113,10 @@ interface Ethernet0/0
 SW3# sh ntp associations
 
   address         ref clock       st   when   poll reach  delay  offset   disp  
- ~172.16.4.12     .INIT.          16      -    512     0  0.000   0.000 15937.  
- * sys.peer, # selected, + candidate, - outlyer, x falseticker, ~ configured  
+ ~172.16.4.12     .INIT.          16      -    512     0  0.000   0.000 15937  
+
+   
+ 
 
 
 
@@ -124,11 +136,3 @@ SW3# sh ntp associations
 
 
 
-Конфигурационные файлы  
-[R12](../Lab12/Configs/R12.txt)  
-[R13](../Lab12/Configs/R13.txt)  
-[R14](../Lab12/Configs/R14.txt)  
-[R15](../Lab12/Configs/R15.txt)  
-[R18](../Lab12/Configs/R18.txt)  
-[R19](../Lab12/Configs/R19.txt)  
-[R20](../Lab12/Configs/R20.txt) 
