@@ -6,6 +6,7 @@
 [R18](../Lab12/Configs/R18.txt)  
 [R19](../Lab12/Configs/R19.txt)  
 [R20](../Lab12/Configs/R20.txt) 
+[R28](../Lab12/Configs/R28.txt) 
 
 
 1. Настроите NAT(PAT) на R14 и R15. Трансляция должна осуществляться в адрес автономной системы AS1001. 
