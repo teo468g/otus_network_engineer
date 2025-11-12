@@ -70,7 +70,27 @@ interface Tunnel1
  tunnel mode gre multipoint  
  tunnel key 999  
 
-  R27  
+ Туннель с хабом построен  
+
+ R28#ping 192.168.3.15  
+Type escape sequence to abort.  
+Sending 5, 100-byte ICMP Echos to 192.168.3.15, timeout is 2 seconds:  
+!!!!!  
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/3 ms  
+
+R28#ping 10.0.0.15  
+Type escape sequence to abort.  
+Sending 5, 100-byte ICMP Echos to 10.0.0.15, timeout is 2 seconds:  
+!!!!!  
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/5 ms  
+
+R28#traceroute 10.0.0.15  
+Type escape sequence to abort.  
+Tracing the route to 10.0.0.15  
+VRF info: (vrf in name/id, vrf out name/id)  
+  1 192.168.3.15 3 msec 4 msec *  
+
+R27  
 
  interface Tunnel1  
  ip address 192.168.3.27 255.255.255.0  
@@ -83,6 +103,21 @@ interface Tunnel1
  tunnel source Ethernet0/0  
  tunnel mode gre multipoint  
  tunnel key 999  
+
+Туннель между споками построен:  
+
+R27> ping 10.0.0.28  
+Type escape sequence to abort.  
+Sending 5, 100-byte ICMP Echos to 10.0.0.28, timeout is 2 seconds:  
+!!!!!  
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/4/12 ms  
+
+R27>traceroute 10.0.0.28  
+Type escape sequence to abort.  
+Tracing the route to 10.0.0.28  
+VRF info: (vrf in name/id, vrf out name/id)  
+  1 192.168.3.28 3 msec 3 msec *  
+
 
  
 
