@@ -21,11 +21,27 @@ interface Tunnel0
  ip address 192.168.2.18 255.255.255.0  
  tunnel source 192.168.1.4  
  tunnel destination 192.168.1.2  
+ tunnel key 111  
 
 B*    0.0.0.0/0 [20/0] via 192.168.1.7, 00:34:35  
                 [20/0] via 192.168.1.5, 00:34:35  
 
- ip route 10.0.0.15 255.255.255.255 192.168.2.15
+ ip route 10.0.0.15 255.255.255.255 192.168.2.15  
+
+ Туннель построен:
+
+ R18#ping 192.168.2.15  
+Type escape sequence to abort.  
+Sending 5, 100-byte ICMP Echos to 192.168.2.15, timeout is 2 seconds:  
+!!!!!  
+Success rate is 100 percent (5/5), round-trip min/avg/max = 2/2/3 ms  
+
+R18#traceroute 10.0.0.15  
+Type escape sequence to abort.  
+Tracing the route to 10.0.0.15  
+VRF info: (vrf in name/id, vrf out name/id)  
+  1 192.168.2.15 [AS 301] 3 msec 8 msec *  
+  
 
 ### Настроить DMVPN между офисами Москва и Чокурдах, Лабытнанги
 
