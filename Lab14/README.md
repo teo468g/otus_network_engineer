@@ -102,11 +102,11 @@ crypto pki trustpoint CA
  revocation-check crl  
  rsakeypair CA  
   
-Trustpoint для самого сервера:  
-crypto pki trustpoint myCertificate
- enrollment url http://CA:80
- serial-number
- ip-address 192.168.1.2
+Trustpoint для самого сервера:   
+crypto pki trustpoint myCertificate  
+ enrollment url http://CA:80  
+ serial-number  
+ ip-address 192.168.1.2  
  revocation-check crl  
 
  Просмотр выданных сертификатов: 
