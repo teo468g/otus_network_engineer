@@ -144,15 +144,15 @@ CA Certificate
 
 
  Настройка ipsec:  
- crypto isakmp policy 10
- encr aes
- hash sha256
- group 16
- lifetime 3600
+ crypto isakmp policy 10  
+ encr aes  
+ hash sha256  
+ group 16  
+ lifetime 3600  
  crypto ipsec transform-set VTI esp-aes esp-sha-hmac  
  mode transport  
- crypto ipsec profile VTI
- set transform-set VTI
+ crypto ipsec profile VTI  
+ set transform-set VTI  
 
  Назначаем ipsec profile VTI на интерфейс Tunnel1:  
  tunnel protection ipsec profile VTI   
