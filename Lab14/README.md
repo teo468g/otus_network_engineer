@@ -210,19 +210,19 @@ crypto ipsec profile VTI
  set transform-set VTI  
 
 
- R28#sh run | sec Tunnel1
-interface Tunnel1
- ip address 192.168.3.28 255.255.255.0
- no ip redirects
- ip nhrp map multicast 192.168.1.2
- ip nhrp map 192.168.3.15 192.168.1.2
- ip nhrp network-id 1
- ip nhrp nhs 192.168.3.15
- ip nhrp registration no-unique
- tunnel source Ethernet0/0
- tunnel mode gre multipoint
- tunnel key 999
- tunnel protection ipsec profile VTI
+ R28#sh run | sec Tunnel1  
+interface Tunnel1  
+ ip address 192.168.3.28 255.255.255.0  
+ no ip redirects  
+ ip nhrp map multicast 192.168.1.2  
+ ip nhrp map 192.168.3.15 192.168.1.2  
+ ip nhrp network-id 1  
+ ip nhrp nhs 192.168.3.15  
+ ip nhrp registration no-unique  
+ tunnel source Ethernet0/0  
+ tunnel mode gre multipoint  
+ tunnel key 999  
+ tunnel protection ipsec profile VTI  
 
 
 Проверяем доступность туннельных адресов:
