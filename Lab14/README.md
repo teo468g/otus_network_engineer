@@ -61,8 +61,15 @@ interface Tunnel0
  tunnel key 111  
  tunnel protection ipsec profile R18  
 
+ Туннель построен:  
+ R18#ping 192.168.2.15  
+Type escape sequence to abort.  
+Sending 5, 100-byte ICMP Echos to 192.168.2.15, timeout is 2 seconds:  
+!!!!!  
+Success rate is 100 percent (5/5), round-trip min/avg/max = 5/6/8 ms  
 
- 
+
+
 
 
  
